@@ -290,6 +290,16 @@ GainExperience: ; 5524f (15:524f)
 	pop bc
 	predef_jump FlagActionPredef ; set the fought current enemy flag for the mon that is currently out
 
+BuffEXP:
+	push de
+	ld d, h
+	ld e, l
+	srl d
+	rr e
+	add hl,de
+	pop de
+	ret
+
 ; divide enemy base stats, catch rate, and base exp by the number of mons gaining exp
 DivideExpDataByNumMonsGainingExp: ; 5546c (15:546c)
 	ld a, [wPartyGainExpFlags]

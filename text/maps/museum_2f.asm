@@ -6,15 +6,25 @@ _Museum2FText1:: ; 96841 (25:6841)
 	done
 
 _Museum2FText2:: ; 96869 (25:6869)
-	text "Feb 13, 2014!"
-
-	para "The start of"
-	line "Twitch Plays"
-	cont "#MON!"
-
-	para "I bought a laptop"
-	line "to watch it!"
+	text "AHHHH!"
+	
+	para "..."
+	
+	para "..sorry, I thought"
+	line "I heard a nearby"
+	cont "explosion from"
+	cont "a SEED BOMB..."
 	done
+	
+	;text "Feb 13, 2014!"
+
+	;para "The start of"
+	;line "Twitch Plays"
+	;cont "#MON!"
+
+	;para "I bought a laptop"
+	;line "to watch it!"
+	;done
 
 _Museum2FText3:: ; 968b1 (25:68b1)
 	text "We have a space"

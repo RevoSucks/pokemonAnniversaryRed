@@ -737,7 +737,7 @@ PrintBCDNumber:: ; 15cd (0:15cd)
 	inc hl
 .skipCurrencySymbol
 	ld [hl],"0"
-	call PrintLetterDelay
+	;call PrintLetterDelay
 	inc hl
 .done
 	ret
@@ -760,7 +760,7 @@ PrintBCDDigit:: ; 1604 (0:1604)
 .outputDigit
 	add a,"0"
 	ld [hli],a
-	jp PrintLetterDelay
+	;jp PrintLetterDelay
 .zeroDigit
 	bit 7,b ; either printing leading zeroes or already reached a nonzero digit?
 	jr z,.outputDigit ; if so, print a zero digit

@@ -122,7 +122,7 @@ PlaceNextChar:: ; 1956 (0:1956)
 	cp $5A
 	jp z,Char5A
 	ld [hli],a
-	call PrintLetterDelay
+	;call PrintLetterDelay
 Next19E8:: ; 19e8 (0:19e8)
 	inc de
 	jp PlaceNextChar

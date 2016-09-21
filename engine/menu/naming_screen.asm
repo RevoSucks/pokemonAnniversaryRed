@@ -11,18 +11,17 @@ AskName: ; 64eb (1:64eb)
 	ld a, [wcf91]
 	ld [wd11e], a
 	call GetMonName
-; Disabled due to many complaints about it
-;	ld hl, DoYouWantToNicknameText
-;	call PrintText
-;	hlCoord 14, 7
-;	ld bc, $80f
-;	ld a, $14
-;	ld [wd125], a
-;	call DisplayTextBoxID
+	ld hl, DoYouWantToNicknameText
+	call PrintText
+	hlCoord 14, 7
+	ld bc, $80f
+	ld a, $14
+	ld [wd125], a
+	call DisplayTextBoxID
 	pop hl
-;	ld a, [wCurrentMenuItem] ; wCurrentMenuItem
-;	and a
-;	jr nz, .asm_654c
+	ld a, [wCurrentMenuItem] ; wCurrentMenuItem
+	and a
+	jr nz, .asm_654c
 	ld a, [wUpdateSpritesEnabled]
 	push af
 	xor a
@@ -135,7 +134,6 @@ DisplayNamingScreen: ; 6596 (1:6596)
 	ld [wCurrentMenuItem], a ; wCurrentMenuItem
 	call JoypadLowSensitivity
 	ld a, [hJoyPressed]
-	and %11110111 ; don't read the start button
 	and a
 	jr z, .asm_65ff
 	ld hl, .unknownPointerTable_665e ; $665e
