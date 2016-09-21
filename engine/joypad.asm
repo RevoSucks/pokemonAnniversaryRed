@@ -1,7 +1,7 @@
 _Joypad::
 	ld a, [hJoyInput]
 	cp A_BUTTON + B_BUTTON + SELECT + START ; soft reset
-	; jp z, TrySoftReset Prevent accidental soft reset when TPP runs
+	jp z, TrySoftReset
 	ld b, a
 	ld a, [hJoyHeldLast]
 	ld e, a

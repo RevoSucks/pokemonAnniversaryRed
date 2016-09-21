@@ -1,15 +1,13 @@
-# Build Red/Blue. Yellow is WIP.
-roms := pokered.gbc pokeblue.gbc
+# Build Anniversary Red.
+roms := pokered.gbc
 
 
-.PHONY: all clean red blue yellow compare
+.PHONY: all clean red
 
 all:    $(roms)
-red:    pokered.gbc
-blue:   pokeblue.gbc
-yellow: pokeyellow.gbc
+red:    pokered151.gbc
 
-versions := red blue yellow
+versions := red
 
 
 # Header options for rgbfix.
@@ -17,24 +15,9 @@ dmg_opt =  -jsv -k 01 -l 0x33 -m 0x13 -p 0 -r 03
 cgb_opt = -cjsv -k 01 -l 0x33 -m 0x1b -p 0 -r 03
 
 red_opt    = $(dmg_opt) -t "POKEMON RED"
-blue_opt   = $(dmg_opt) -t "POKEMON BLUE"
-yellow_opt = $(cgb_opt) -t "POKEMON YELLOW"
-
-
 
 # If your default python is 3, you may want to change this to python27.
 PYTHON := python
-
-# md5sum -c is used to compare rom hashes. The options may vary across platforms.
-MD5 := md5sum -c --quiet
-
-
-# The compare target is a shortcut to check that the build matches the original roms exactly.
-# This is for contributors to make sure a change didn't affect the contents of the rom.
-# More thorough comparison can be made by diffing the output of hexdump -C against both roms.
-compare:
-	@$(MD5) roms.md5
-
 
 # Clear the default suffixes.
 .SUFFIXES:
@@ -90,7 +73,6 @@ link = rgblink -n poke$*.sym
 poke%.gbc: $$(%_obj)
 	$(link) -o $@ $^
 	rgbfix $($*_opt) $@
-
 
 clean:
 	rm -f $(roms) $(all_obj) poke*.sym

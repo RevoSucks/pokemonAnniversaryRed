@@ -3628,7 +3628,7 @@ PrintLetterDelay:: ; 38d3 (0:38d3)
 	bit 1,a ; is the B button pressed?
 	jr z,.buttonsNotPressed
 .endWait
-	call DelayFrame
+	;call DelayFrame ; do not wait
 	jr .done
 .buttonsNotPressed ; if neither A nor B is pressed
 	ld a,[H_FRAMECOUNTER]
