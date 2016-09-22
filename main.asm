@@ -5473,6 +5473,7 @@ INCLUDE "engine/menu/pokedex.asm"
 INCLUDE "engine/trade.asm"
 INCLUDE "engine/intro.asm"
 INCLUDE "engine/trade2.asm"
+INCLUDE "engine/overworld/advance_player_sprite.asm"
 
 
 SECTION "bank11",ROMX,BANK[$11]

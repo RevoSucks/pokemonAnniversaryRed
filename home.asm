@@ -737,7 +737,7 @@ PrintBCDNumber:: ; 15cd (0:15cd)
 	inc hl
 .skipCurrencySymbol
 	ld [hl],"0"
-	;call PrintLetterDelay
+	call PrintLetterDelay
 	inc hl
 .done
 	ret
@@ -760,7 +760,7 @@ PrintBCDDigit:: ; 1604 (0:1604)
 .outputDigit
 	add a,"0"
 	ld [hli],a
-	;jp PrintLetterDelay
+	jp PrintLetterDelay
 .zeroDigit
 	bit 7,b ; either printing leading zeroes or already reached a nonzero digit?
 	jr z,.outputDigit ; if so, print a zero digit
@@ -3531,7 +3531,7 @@ WaitForTextScrollButtonPress:: ; 3865 (0:3865)
 	pop hl
 	call JoypadLowSensitivity
 	predef Func_5a5f
-	ld a, [hJoy5]
+	ld a, [hJoyHeld]
 	and A_BUTTON | B_BUTTON
 	jr z, .loop
 	pop af
@@ -3549,8 +3549,8 @@ ManualTextScroll:: ; 3898 (0:3898)
 	ld a, (SFX_02_40 - SFX_Headers_02) / 3
 	jp PlaySound
 .inLinkBattle
-	ld c, $41
-	jp DelayFrames
+	;ld c, $41
+	;jp DelayFrames
 
 ; function to do multiplication
 ; all values are big endian

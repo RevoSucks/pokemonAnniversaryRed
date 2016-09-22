@@ -26,8 +26,22 @@ LoadDefaultNamesPlayer: ; 695d (1:695d)
 	ld [wd07d], a
 	call DisplayNamingScreen
 	ld a, [wcf4b]
-	cp $50
-	jr z, .asm_697a
+	cp "@"
+	jr nz, .skipDefault
+	ld a, [wPlayerGender]
+	cp 1
+	jr z, .femaleNameSet
+	ld de, wPlayerName
+	ld hl, DefaultPlayerName
+	ld bc, 11
+	call CopyData
+	jp .skipDefault
+.femaleNameSet
+	ld de, wPlayerName
+	ld hl, DefaultPlayerNameF
+	ld bc, 11
+	call CopyData
+.skipDefault
 	call ClearScreen
 	call Delay3
 	ld de, RedPicFront ; $6ede
@@ -64,8 +78,13 @@ LoadDefaultNamesRival: ; 69a4 (1:69a4)
 	ld [wd07d], a
 	call DisplayNamingScreen
 	ld a, [wcf4b]
-	cp $50
-	jr z, .asm_69c1
+	cp "@"
+	jr nz, .skipdefault2
+	ld de, W_RIVALNAME
+    ld hl, DefaultRivalName
+    ld bc, 11
+.skipdefault2
+    call CopyData
 	call ClearScreen
 	call Delay3
 	ld de, Rival1Pic ; $6049
@@ -196,6 +215,15 @@ DisplayIntroNameTextBox: ; 6a6c (1:6a6c)
 .namestring ; 6aa3 (1:6aa3)
 	db "NAME@"
 
+DefaultPlayerName:
+	db "RED@" ; i cant figure out how to do this.
+
+DefaultPlayerNameF:
+	db "GREEN@" ; i cant figure out how to do this.
+	
+DefaultRivalName:
+	db "BLUE@" ; i cant figure out how to do this.
+
 IF DEF(_RED)
 DefaultNamesPlayer: ; 6aa8 (1:6aa8)
 	db   "NEW NAME"
@@ -283,12 +311,6 @@ DefaultNamesPlayerList: ; 6af2 (1:6af2)
 	db "NEW NAME@BLUE@GARY@JOHN@"
 DefaultNamesRivalList: ; 6b08 (1:6b08)
 	db "NEW NAME@RED@ASH@JACK@"
-ENDC
-IF DEF(_YELLOW)
-DefaultNamesPlayerList:
-	db "NEW NAME@YELLOW@ASH@JACK@"
-DefaultNamesRivalList:
-	db "NEW NAME@BLUE@GARY@JOHN@"
 ENDC
 
 DefaultNamesPlayerListG:

@@ -203,10 +203,12 @@ DisplayNamingScreen: ; 6596 (1:6596)
 	xor $1
 	ld [wHPBarOldHP], a
 	ret
-.asm_668c
+
+.asm_668c ; press start
 	ld a, $1
 	ld [wHPBarMaxHP + 1], a
 	ret
+
 .asm_6692
 	ld a, [wCurrentMenuItem] ; wCurrentMenuItem
 	cp $5
@@ -214,6 +216,7 @@ DisplayNamingScreen: ; 6596 (1:6596)
 	ld a, [wTopMenuItemX] ; wTopMenuItemX
 	cp $11
 	jr z, .asm_668c
+
 .asm_66a0
 	ld a, [wCurrentMenuItem] ; wCurrentMenuItem
 	cp $6

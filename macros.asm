@@ -55,6 +55,12 @@ jpba: MACRO
 	jp Bankswitch
 	ENDM
 
+jpab: MACRO
+	ld hl, \1
+	ld b, BANK(\1)
+	jp Bankswitch
+	ENDM
+
 ;\1 = X
 ;\2 = Y
 hlCoord: MACRO
@@ -595,3 +601,20 @@ overwriteroster: MACRO
 	ld e, \1
 	rst OverwriteRoster
 ENDM
+
+CheckEvent: MACRO
+event_byte = ((\1) / 8)
+	ld a, [wEventFlags + event_byte]
+
+	IF _NARG > 1
+		IF ((\1) % 8) == 7
+			add a
+		ELSE
+			REPT ((\1) % 8) + 1
+				rrca
+			ENDR
+		ENDC
+	ELSE
+		bit (\1) % 8, a
+	ENDC
+	ENDM

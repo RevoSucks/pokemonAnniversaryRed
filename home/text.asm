@@ -122,7 +122,7 @@ PlaceNextChar:: ; 1956 (0:1956)
 	cp $5A
 	jp z,Char5A
 	ld [hli],a
-	;call PrintLetterDelay
+	call PrintLetterDelay
 Next19E8:: ; 19e8 (0:19e8)
 	inc de
 	jp PlaceNextChar
@@ -271,7 +271,7 @@ Char58:: ; 1a95 (0:1a95)
 	ld a,$EE
 	Coorda 18, 16
 Next1AA2:: ; 1aa2 (0:1aa2)
-	;call ProtectedDelay3
+	call ProtectedDelay3
 	call ManualTextScroll
 	ld a,$7F
 	Coorda 18, 16
@@ -288,13 +288,13 @@ Char51:: ; 1ab4 (0:1ab4)
 	push de
 	ld a,$EE
 	Coorda 18, 16
-	;call ProtectedDelay3
+	call ProtectedDelay3
 	call ManualTextScroll
 	hlCoord 1, 13
 	ld bc,$0412
 	call ClearScreenArea
 	ld c,$14
-	;call DelayFrames
+	call DelayFrames
 	pop de
 	hlCoord 1, 14
 	jp Next19E8
@@ -303,7 +303,7 @@ Char49:: ; 1ad5 (0:1ad5)
 	push de
 	ld a,$EE
 	Coorda 18, 16
-	;call ProtectedDelay3
+	call ProtectedDelay3
 	call ManualTextScroll
 	hlCoord 1, 10
 	ld bc,$0712
@@ -319,7 +319,7 @@ Char49:: ; 1ad5 (0:1ad5)
 Char4B:: ; 1af8 (0:1af8)
 	ld a,$EE
 	Coorda 18, 16
-	;call ProtectedDelay3
+	call ProtectedDelay3
 	push de
 	call ManualTextScroll
 	pop de
@@ -353,11 +353,11 @@ Next1B18:: ; 1b18 (0:1b18)
 	jr nz,.next2
 
 	; wait five frames
-	ld b,5
-.WaitFrame
+	;ld b,0
+.WaitFrame ; dont wait at all.
 	;call DelayFrame
-	dec b
-	jr nz,.WaitFrame
+	;dec b
+	;jr nz,.WaitFrame
 
 	ret
 
@@ -656,7 +656,7 @@ TextCommand0C:: ; 1c78 (0:1c78)
 	ld a,[hJoyHeld] ; joypad state
 	and a,%00000011 ; is A or B button pressed?
 	jr nz,.skipDelay ; if so, skip the delay
-	;ld c,10
+	ld c,10
 	;call DelayFrames
 .skipDelay
 	dec d

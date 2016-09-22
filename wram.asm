@@ -1242,11 +1242,13 @@ W_PRIZE2:: ; d13e
 W_PRIZE3:: ; d13f
 	ds 1
 
+wSlipRunningFlags:: ; d140
 	ds 1
 
 wd141:: ds 2
 wd143:: ds 2
-wd145:: ds 3
+wd145:: ds 2
+wWalkCounterHitZero:: ds 1
 wd148:: ds 10
 wd152:: ds 1
 wd153:: ds 3
