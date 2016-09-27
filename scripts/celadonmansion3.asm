@@ -26,9 +26,9 @@ WriterText: ; 487ad (12:47ad)
 DirectorText: ; 487b2 (12:47b2)
 	db $08 ; asm
 
-	; check pokédex
-	ld a, [wd5a2] ; number of HoF teams
-	and a
+	; check rematches
+	ld a, [wRematchFlag]
+	and $FF
 	jr nz, .CompletedDex
 	ld hl, .GameDesigner
 	jr .done
@@ -43,7 +43,7 @@ DirectorText: ; 487b2 (12:47b2)
 	db "@"
 
 .CompletedDexText
-	TX_FAR _CompletedHOFText
+	TX_FAR _CompletedRematchesText
 	db $6
 	db $8 ; asm
 	callab DisplayDiploma

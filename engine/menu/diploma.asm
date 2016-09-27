@@ -79,29 +79,29 @@ DiplomaTextPointersAndCoords: ; 56784 (15:6784)
 	dw DiplomaText
 	dw wTileMap + $2d
 	dw DiplomaPlayer
-	dw wTileMap + $53
+	dw wTileMap + $54
 	dw DiplomaEmptyText
 	dw wTileMap + $5f
 	dw DiplomaCongrats
 	dw wTileMap + $7a
 	dw DiplomaGameFreak
-	dw wTileMap + $148
+	dw wTileMap + $141
 
 DiplomaText:
 	db $70,"Diploma",$70,"@"
 
 DiplomaPlayer:
-	db "Memer @"
+	db "Memer@"
 
 DiplomaEmptyText:
 	db "@"
 
 DiplomaCongrats:
-	db   "Congrats! This"
+	db   "...neat! This"
 	next "diploma certifies"
 	next "that you are"
-	next "in fact a"
-	next "GOD GAMER.@"
+	next "in fact the"
+	next "GOD GAMER KEIZ.@"
 
 DiplomaGameFreak:
-	db "MEMEBIG.NET@"
+	db "http://memebig.net@"

@@ -46,8 +46,9 @@ _GameDesignerKeiza::
 	cont "ROM hack..."
 	
 	para "You just need to"
-	line "get into the"
-	cont "HALL OF FAME."
+	line "beat all 8 gym"
+	cont "rematches"
+	cont "in post game."
 	
 	para "Don't give up!"
 	done
@@ -59,11 +60,11 @@ _CompletedDexText:: ; 9d0ad (27:50ad)
 	cont "Congratulations!"
 	cont "...@@"
 
-_CompletedHOFText::
+_CompletedRematchesText::
 	text "Wow! Excellent!"
 	line "You reked the"
 	cont "shit out of the"
-	cont "ELITE FOUR!"
+	cont "GYM LEADERS!"
 	
 	para "Congratulations!"
 	
