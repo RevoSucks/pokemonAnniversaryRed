@@ -27,12 +27,9 @@ DirectorText: ; 487b2 (12:47b2)
 	db $08 ; asm
 
 	; check pokédex
-	ld hl, wPokedexOwned
-	ld b, wPokedexOwnedEnd - wPokedexOwned
-	call CountSetBits
-	ld a, [wd11e]
-	cp 151 ; Catch all 151 or riot!
-	jr nc, .CompletedDex
+	ld a, [wd5a2] ; number of HoF teams
+	and a
+	jr nz, .CompletedDex
 	ld hl, .GameDesigner
 	jr .done
 .CompletedDex
@@ -42,11 +39,11 @@ DirectorText: ; 487b2 (12:47b2)
 	jp TextScriptEnd
 
 .GameDesigner ; 487d0 (12:47d0)
-	TX_FAR _GameDesignerText
+	TX_FAR _GameDesignerKeiza
 	db "@"
 
 .CompletedDexText
-	TX_FAR _CompletedDexText
+	TX_FAR _CompletedHOFText
 	db $6
 	db $8 ; asm
 	callab DisplayDiploma

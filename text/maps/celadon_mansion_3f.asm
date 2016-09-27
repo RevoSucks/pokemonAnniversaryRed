@@ -34,12 +34,40 @@ _GameDesignerText:: ; 9d03a (27:503a)
 	line "come tell me!"
 	done
 
+_GameDesignerKeiza::
+	text "Aren't you a gamer"
+	line "god?"
+	
+	para "I'm the game"
+	line "designer!"
+	
+	para "In this particular"
+	line "version of this"
+	cont "ROM hack..."
+	
+	para "You just need to"
+	line "get into the"
+	cont "HALL OF FAME."
+	
+	para "Don't give up!"
+	done
+
 _CompletedDexText:: ; 9d0ad (27:50ad)
 	text "Wow! Excellent!"
 	line "You completed"
 	cont "your #DEX!"
 	cont "Congratulations!"
 	cont "...@@"
+
+_CompletedHOFText::
+	text "Wow! Excellent!"
+	line "You reked the"
+	cont "shit out of the"
+	cont "ELITE FOUR!"
+	
+	para "Congratulations!"
+	
+	para "...@@"
 
 _CeladonMansion3Text5:: ; 9d0ed (27:50ed)
 	text "It's the game"
