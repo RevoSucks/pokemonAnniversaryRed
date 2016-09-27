@@ -91,7 +91,7 @@ DiplomaText:
 	db $70,"Diploma",$70,"@"
 
 DiplomaPlayer:
-	db "Player@"
+	db "Memer @"
 
 DiplomaEmptyText:
 	db "@"
@@ -101,7 +101,7 @@ DiplomaCongrats:
 	next "diploma certifies"
 	next "that you are"
 	next "in fact a"
-	next "GAMER GOD.@"
+	next "GOD GAMER.@"
 
 DiplomaGameFreak:
 	db "MEMEBIG.NET@"

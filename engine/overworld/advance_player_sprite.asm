@@ -170,8 +170,6 @@ _AdvancePlayerSprite:: ; 0d27 (0:0d27)
 	ld a,[$ffae]
 	add c
 	ld [$ffae],a ; update background scroll X
-; shift all the sprites in the direction opposite of the player's motion
-; so that the player appears to move relative to them
 	ld hl,wSpriteStateData1 + $14
 	ld a,[W_NUMSPRITES] ; number of sprites
 	and a ; are there any sprites?

@@ -62,7 +62,12 @@ UpdatePlayerSprite: ; 4e31 (1:4e31)
 	ld a, [H_CURRENTSPRITEOFFSET]
 	add $7
 	ld l, a
-	ld a, [hl]
+	ld a, [hJoyHeld] ; am I holding B?
+	and B_BUTTON
+	ld a, [hl] ; oops
+	jr z, .noDouble
+	inc a
+.noDouble
 	inc a
 	ld [hl], a
 	cp $4
