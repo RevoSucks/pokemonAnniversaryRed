@@ -5411,8 +5411,11 @@ MoveHitTest: ; 3e56b (f:656b)
 .skipEnemyMistCheck
 	ld a,[W_PLAYERBATTSTATUS2]
 	bit 0,a ; is the player using X Accuracy?
-	ret nz ; if so, always hit regardless of accuracy/evasion
-	jr .calcHitChance
+	jr z, .calcHitChance
+	ld a, [W_PLAYERMOVEEFFECT]
+	cp OHKO_EFFECT
+	jr z, .calcHitChance
+	ret
 .enemyTurn
 	ld a,[W_ENEMYMOVEEFFECT]
 	cp a,ATTACK_DOWN1_EFFECT
@@ -5432,7 +5435,10 @@ MoveHitTest: ; 3e56b (f:656b)
 .skipPlayerMistCheck
 	ld a,[W_ENEMYBATTSTATUS2]
 	bit 0,a ; is the enemy using X Accuracy?
-	ret nz ; if so, always hit regardless of accuracy/evasion
+	jr z, .calcHitChance
+	ld a, [W_ENEMYMOVEEFFECT]
+	cp OHKO_EFFECT
+	ret nz
 .calcHitChance
 	call CalcHitChance ; scale the move accuracy according to attacker's accuracy and target's evasion
 	ld a,[W_PLAYERMOVEACCURACY]

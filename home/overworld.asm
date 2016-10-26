@@ -267,9 +267,25 @@ OverworldLoopLessDelay::
 	ld a,[wd736]
 	bit 6,a ; jumping a ledge?
 	jr nz,.normalPlayerSpriteAdvancement
+	ld a, 3
+.bikeSpeedupLoop
+	push af
 	call BikeSpeedup ; if riding a bike and not jumping a ledge
+	pop af
+	dec a
+	jr nz, .bikeSpeedupLoop
+	jr .skipRunningShoesCheck
 .normalPlayerSpriteAdvancement
 	call AdvancePlayerSprite
+	ld a, [hJoyHeld]
+	bit 1, a
+	jr z, .skipRunningShoes
+    ld a,[wNPCMovementScriptPointerTableNum]
+    and a
+    jr nz, .skipRunningShoes
+.skipRunningShoesCheck
+	call AdvancePlayerSprite
+.skipRunningShoes
 	ld a,[wWalkCounter]
 	and a
 	jp nz,CheckMapConnections ; it seems like this check will never succeed (the other place where CheckMapConnections is run works)
